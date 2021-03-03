@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolOfHardKnocks.Models
+namespace SchoolOfHardKnocks.Data
 {   
-    public class SupportStaff
+    public class Support
     {
-        public int StaffID { get; set; }
+        public int SupportID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Role { get; set; }
