@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolOfHardKnocks.Models
+namespace SchoolOfHardKnocks.Data
 {
-    public class Faculty
+    public enum Grade { FR = 1, SO, JR, SR }
+    public class Student
     {
-        public int FacultyID { get; set; }
+        public int StudentID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        public string Dept { get; set; }
+        public Grade Grade { get; set; }
     }
 }
