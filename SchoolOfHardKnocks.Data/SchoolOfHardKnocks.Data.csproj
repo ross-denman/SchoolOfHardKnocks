@@ -147,10 +147,15 @@
   <ItemGroup>
     <Compile Include="Administrative.cs" />
     <Compile Include="Faculty.cs" />
+    <Compile Include="FacultyListItem.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="OfficeListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Support.cs" />
+    <Compile Include="SchoolName.cs" />
+    <Compile Include="StudentListItem.cs" />
+    <Compile Include="SupportStaffListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
