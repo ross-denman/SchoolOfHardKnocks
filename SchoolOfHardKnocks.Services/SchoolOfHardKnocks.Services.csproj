@@ -76,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FacultyService.cs" />
-    <Compile Include="AdministrativeService.cs" />
+    <Compile Include="OfficeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentService.cs" />
     <Compile Include="SupportStaffService.cs" />
@@ -84,16 +84,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SchoolOfHardKnocks.Data\SchoolOfHardKnocks.Data.csproj">
-      <Project>{9e3f360c-2dbc-4868-9c55-abced3985467}</Project>
-      <Name>SchoolOfHardKnocks.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SchoolOfHardKnocks.Models\SchoolOfHardKnocks.Models.csproj">
-      <Project>{05877d6d-70c5-479f-aac7-141c2b26cdf7}</Project>
-      <Name>SchoolOfHardKnocks.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

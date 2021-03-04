@@ -1,6 +1,4 @@
-﻿using SchoolOfHardKnocks.Data;
-using SchoolOfHardKnocks.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,51 +9,48 @@ namespace SchoolOfHardKnocks.Services
     public class StudentService
     {
         private readonly Guid _userId;
-        
-        public StudentService(Guid userId)
+
+        public FacultyService(Guid userId)
         {
             _userId = userId;
         }
 
-        public bool CreateStudent(StudentCreate model)
+        public bool CreateNote(FacultyCreate model)
         {
-            var entity = new Student()
+            var entity = new Faculty()
             {
-                StudentId = _userId,
+                FacultyId = _userId,
                 LastName = model.LastName,
-                FirstName = model.FirstName,
-                GradeLevel = model.GradeLevel,
+                Dept = model.Dept,
                 CreatedUtc = DateTimeOffset.Now
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Students.Add(entity);
+                ctx.Faculties.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<StudentListItem> GetNotes()
+        public IEnumerable<NoteListItem> GetNotes()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Students
-                    .Where(e => e.StudentId == _userId)
+                    .Notes
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
-                        new StudentListItem
+                        new NoteListItem
                         {
-                            StudentId = e.StudentId,
-                            LastName = e.LastName,
-                            FirstName = e.FirstName,
-                            GradeLevel = e.GradeLevel,
+                            NoteId = e.NoteId,
+                            Title = e.Title,
                             CreatedUtc = e.CreatedUtc
                         }
                         );
                 return query.ToArray();
             }
-        } 
+        }
     }
 }

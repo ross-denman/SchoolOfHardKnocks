@@ -75,25 +75,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministrativeCreate.cs" />
-    <Compile Include="FacultyCreate.cs" />
-    <Compile Include="FacultyListItem.cs" />
-    <Compile Include="AdministrativeListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StudentCreate.cs" />
-    <Compile Include="StudentListItem.cs" />
-    <Compile Include="SupportStaffListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <Compile Include="SupportStaffCreate.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SchoolOfHardKnocks.Data\SchoolOfHardKnocks.Data.csproj">
-      <Project>{9e3f360c-2dbc-4868-9c55-abced3985467}</Project>
-      <Name>SchoolOfHardKnocks.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

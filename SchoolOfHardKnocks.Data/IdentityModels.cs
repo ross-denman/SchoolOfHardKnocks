@@ -33,7 +33,7 @@ namespace SchoolOfHardKnocks.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<Administrative>    AdministrativeStaff  { get; set; }
+        public DbSet<Administrative>    AdminstrativeStaff  { get; set; }
         public DbSet<Faculty>           FacultyStaff        { get; set; }
         public DbSet<Student>           Students            { get; set; }
         public DbSet<Support>           SupportStaff        { get; set; }
