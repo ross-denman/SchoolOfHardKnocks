@@ -15,6 +15,7 @@ namespace SchoolOfHardKnocks.Data
         [Required]
         public Grade GradeLevel { get; set; }
         //
+        //
     }
     
 }
