@@ -12,5 +12,7 @@ namespace SchoolOfHardKnocks.Data
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Title { get; set; }
+
+        // Use for Principal. VP etc.
     }
 }
