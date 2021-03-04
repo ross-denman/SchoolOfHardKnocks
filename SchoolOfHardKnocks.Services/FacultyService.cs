@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SchoolOfHardKnocks.Data;
+using SchoolOfHardKnocks.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,48 +11,51 @@ namespace SchoolOfHardKnocks.Services
     public class FacultyService
     {
         private readonly Guid _userId;
-
+        
         public FacultyService(Guid userId)
         {
             _userId = userId;
         }
 
-        public bool CreateNote(FacultyCreate model)
+        public bool CreateFaculty(FacultyCreate model)
         {
             var entity = new Faculty()
             {
                 FacultyId = _userId,
                 LastName = model.LastName,
+                FirstName = model.FirstName,
                 Dept = model.Dept,
                 CreatedUtc = DateTimeOffset.Now
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Faculties.Add(entity);
+                ctx.FacultyStaff.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<NoteListItem> GetNotes()
+        public IEnumerable<FacultyListItem> GetFaculty()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Notes
-                    .Where(e => e.OwnerId == _userId)
+                    .FacultyStaff
+                    .Where(e => e.FacultyId == _userId)
                     .Select(
                         e =>
-                        new NoteListItem
+                        new FacultyListItem
                         {
-                            NoteId = e.NoteId,
-                            Title = e.Title,
+                            FacultyId = e.FacultyId,
+                            LastName = e.LastName,
+                            FirstName = e.FirstName,
+                            Dept = e.Dept,
                             CreatedUtc = e.CreatedUtc
                         }
                         );
                 return query.ToArray();
             }
-        }
+        } 
     }
 }

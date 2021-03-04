@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace SchoolOfHardKnocks.Data
 {   
-    public class Support
+    public class Support : SchoolName
     {
-        public int SupportID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
+        public Guid SupportId { get; set; }
+       
         public string Role { get; set; }
     }
 }

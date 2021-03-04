@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,12 +8,13 @@ using System.Threading.Tasks;
 namespace SchoolOfHardKnocks.Data
 {
     public enum Grade { FR = 1, SO, JR, SR }
-    public class Student
+    public class Student : SchoolName
     {
-        public int StudentID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public Grade Grade { get; set; }
+        [Key]
+        public Guid StudentId { get; set; }
+        [Required]
+        public Grade GradeLevel { get; set; }
         //
     }
+    
 }
