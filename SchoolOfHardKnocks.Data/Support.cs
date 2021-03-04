@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace SchoolOfHardKnocks.Data
 {   
-    public class Support : SchoolName
+    public class Support
     {
         [Key]
         public Guid SupportId { get; set; }
-       
+        public int SupportID { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
         public string Role { get; set; }
     }
 }
