@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SchoolOfHardKnocks.Data;
+using SchoolOfHardKnocks.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,42 +12,45 @@ namespace SchoolOfHardKnocks.Services
     {
         private readonly Guid _userId;
 
-        public FacultyService(Guid userId)
+        public SupportStaffService(Guid userId)
         {
             _userId = userId;
         }
 
-        public bool CreateNote(FacultyCreate model)
+        public bool CreateStudent(SupportStaffCreate model)
         {
-            var entity = new Faculty()
+            var entity = new Support()
             {
-                FacultyId = _userId,
+                SupportId = _userId,
                 LastName = model.LastName,
-                Dept = model.Dept,
+                FirstName = model.FirstName,
+                Role = model.Role,
                 CreatedUtc = DateTimeOffset.Now
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Faculties.Add(entity);
+                ctx.SupportStaff.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<NoteListItem> GetNotes()
+        public IEnumerable<SupportStaffListItem> GetStaff()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Notes
-                    .Where(e => e.OwnerId == _userId)
+                    .SupportStaff
+                    .Where(e => e.SupportId == _userId)
                     .Select(
                         e =>
-                        new NoteListItem
+                        new SupportStaffListItem
                         {
-                            NoteId = e.NoteId,
-                            Title = e.Title,
+                            SupportId = e.SupportId,
+                            LastName = e.LastName,
+                            FirstName = e.FirstName,
+                            Role = e.Role,
                             CreatedUtc = e.CreatedUtc
                         }
                         );
@@ -54,3 +59,4 @@ namespace SchoolOfHardKnocks.Services
         }
     }
 }
+

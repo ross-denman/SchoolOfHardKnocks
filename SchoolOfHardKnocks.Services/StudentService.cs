@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SchoolOfHardKnocks.Data;
+using SchoolOfHardKnocks.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,48 +11,51 @@ namespace SchoolOfHardKnocks.Services
     public class StudentService
     {
         private readonly Guid _userId;
-
-        public FacultyService(Guid userId)
+        
+        public StudentService(Guid userId)
         {
             _userId = userId;
         }
 
-        public bool CreateNote(FacultyCreate model)
+        public bool CreateStudent(StudentCreate model)
         {
-            var entity = new Faculty()
+            var entity = new Student()
             {
-                FacultyId = _userId,
+                StudentId = _userId,
                 LastName = model.LastName,
-                Dept = model.Dept,
+                FirstName = model.FirstName,
+                GradeLevel = model.GradeLevel,
                 CreatedUtc = DateTimeOffset.Now
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Faculties.Add(entity);
+                ctx.Students.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<NoteListItem> GetNotes()
+        public IEnumerable<StudentListItem> GetNotes()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Notes
-                    .Where(e => e.OwnerId == _userId)
+                    .Students
+                    .Where(e => e.StudentId == _userId)
                     .Select(
                         e =>
-                        new NoteListItem
+                        new StudentListItem
                         {
-                            NoteId = e.NoteId,
-                            Title = e.Title,
+                            StudentId = e.StudentId,
+                            LastName = e.LastName,
+                            FirstName = e.FirstName,
+                            GradeLevel = e.GradeLevel,
                             CreatedUtc = e.CreatedUtc
                         }
                         );
                 return query.ToArray();
             }
-        }
+        } 
     }
 }
