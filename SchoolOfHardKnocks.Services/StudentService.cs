@@ -35,7 +35,7 @@ namespace SchoolOfHardKnocks.Services
             }
         }
 
-        public IEnumerable<StudentListItem> GetNotes()
+        public IEnumerable<StudentListItem> GetStudents()
         {
             using (var ctx = new ApplicationDbContext())
             {
