@@ -10,6 +10,6 @@ namespace SchoolOfHardKnocks.Models
 {
     public class StudentCreate : Student
     {
-        
+        //This class inherits from Student and SchoolName
     }
 }
