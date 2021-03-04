@@ -14,5 +14,6 @@ namespace SchoolOfHardKnocks.Data
         public string FirstName { get; set; }
         public Grade Grade { get; set; }
         //
+        //
     }
 }

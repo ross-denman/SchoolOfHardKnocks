@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +32,8 @@ namespace SchoolOfHardKnocks.Services
             }
         }
 
-        public IEnumerable<NoteListItem> GetNotes()
+        public IEnumerable<StudentListItem> GetStudents()
+
         {
             using (var ctx = new ApplicationDbContext())
             {

@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -33,10 +33,11 @@ namespace SchoolOfHardKnocks.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<Administrative>    AdminstrativeStaff  { get; set; }
+        public DbSet<Administrative>    AdministrativeStaff { get; set; }
         public DbSet<Faculty>           FacultyStaff        { get; set; }
         public DbSet<Student>           Students            { get; set; }
         public DbSet<Support>           SupportStaff        { get; set; }
+        public DbSet<Email>             Emails              { get; set; }
         
     }
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
