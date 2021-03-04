@@ -1,6 +1,4 @@
-﻿using SchoolOfHardKnocks.Data;
-using SchoolOfHardKnocks.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,47 +6,45 @@ using System.Threading.Tasks;
 
 namespace SchoolOfHardKnocks.Services
 {
-    public class AdministrativeService
+    public class OfficeService
     {
         private readonly Guid _userId;
-        public AdministrativeService(Guid userId)
+
+        public FacultyService(Guid userId)
         {
             _userId = userId;
         }
 
-        public bool CreateAdministrative(AdministrativeCreate model)
+        public bool CreateNote(FacultyCreate model)
         {
-            var entity = new Administrative()
+            var entity = new Faculty()
             {
-                AdminId = _userId,
+                FacultyId = _userId,
                 LastName = model.LastName,
-                FirstName = model.FirstName,
-                Title = model.Title,
+                Dept = model.Dept,
                 CreatedUtc = DateTimeOffset.Now
             };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.AdministrativeStaff.Add(entity);
+                ctx.Faculties.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<AdministrativeListItem> GetAdmin()
+        public IEnumerable<NoteListItem> GetNotes()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .AdministrativeStaff
-                    .Where(e => e.AdminId == _userId)
+                    .Notes
+                    .Where(e => e.OwnerId == _userId)
                     .Select(
                         e =>
-                        new AdministrativeListItem
+                        new NoteListItem
                         {
-                            AdminId = e.AdminId,
-                            LastName = e.LastName,
-                            FirstName = e.FirstName,
+                            NoteId = e.NoteId,
                             Title = e.Title,
                             CreatedUtc = e.CreatedUtc
                         }
