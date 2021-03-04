@@ -1,6 +1,8 @@
 # School of Hard Knocks
 Mail/Messenging system for school
 
+first sprint ended 3/4/2021
+
 ## Agile Board
 
 https://trello.com/b/EvDo1Guu/agile-project-mail-messenging-system
