@@ -1,4 +1,4 @@
-# SchoolOfHardKnocks
+# School of Hard Knocks
 Mail/Messenging system for school
 
 ## Agile Board
